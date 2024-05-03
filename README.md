@@ -4,13 +4,13 @@
 
 #### Para Correr el proyecto haz lo siguiente:
 
-> Descárgalo
+##### Descárgalo
 
-> Descomprimelo, y luego dentro de la carpeta proyecto-tienda haz lo siguiente:
+##### Descomprimelo, y luego dentro de la carpeta proyecto-tienda haz lo siguiente:
 
 > npm install
 
-#### Luego de que haya instalado haz:
+##### Luego de que haya instalado haz:
 
 > npm run start:dev
 
