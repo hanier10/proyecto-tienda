@@ -19,4 +19,32 @@ export class ProductosService {
 
     return producto; //retornar
   }
-}
+
+  //encontrar un registro
+  encontrarUnProducto(id: number){
+    return this.productoRepo.findOne({
+      where: { id }
+    });
+  };
+
+  //encontrar todos los registros
+  encontrarTodosLosProductos(){
+    return this.productoRepo.find({
+      order: { id: 'ASC' } 
+    });
+  };
+
+  //eliminar un registro
+  async eliminarRegistro(id: number){
+    const eliminar = await this.encontrarUnProducto(id); //encuentro
+    await this.productoRepo.remove(eliminar); //elimino
+    return 'Registro eliminado con exito'; //retornar un mensaje
+  };
+
+  //actualizar un registro
+  async actualizarRegistro(id: number, cambios: CreateProductoDto){
+    const viejoRegistro = await this.encontrarUnProducto(id); //encuentro
+    const nuevoRegistro = this.productoRepo.merge(viejoRegistro, cambios); //fusion
+    return await this.productoRepo.save(nuevoRegistro); //guardo
+  };
+};
